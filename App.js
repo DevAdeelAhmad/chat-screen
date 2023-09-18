@@ -1,5 +1,5 @@
-import React from "react";
-import { View, FlatList, StyleSheet } from "react-native";
+import React, {useState} from "react";
+import { View, FlatList, StyleSheet, TouchableOpacity } from "react-native";
 import { ListItem, Avatar, Text } from "react-native-elements";
 
 const data = Array.from({ length: 25 }, (_, i) => ({
@@ -9,14 +9,19 @@ const data = Array.from({ length: 25 }, (_, i) => ({
   time: `${Math.floor(Math.random() * 12)}:${Math.floor(Math.random() * 60)} ${
     Math.random() > 0.5 ? "AM" : "PM"
   }`,
-  avatar: `https://randomuser.me/api/portraits/thumb/men/${i}.jpg`, 
+  avatar: `https://randomuser.me/api/portraits/thumb/men/${i}.jpg`,
 }));
 
 export default function App() {
+  const [count, setCount] = useState(0);
+  const onPress = () => setCount(prevCount => prevCount + 1);
+
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.headingWrapper}>
-        <Text style={styles.heading}>WhatsApp</Text>
+        <TouchableOpacity onPress={onPress} style={styles.topButton}>
+          <Text style={styles.heading}>What Count : {count}</Text>
+        </TouchableOpacity>
       </View>
       <FlatList
         data={data}
@@ -52,5 +57,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     paddingTop: 20,
+  },
+  topButton: {
+    alignItems: 'center',
+    color: "white",
   },
 });
