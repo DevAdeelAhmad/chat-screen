@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { View, FlatList, StyleSheet, TouchableOpacity } from "react-native";
 import { ListItem, Avatar, Text } from "react-native-elements";
 
@@ -14,13 +14,14 @@ const data = Array.from({ length: 25 }, (_, i) => ({
 
 export default function App() {
   const [count, setCount] = useState(0);
-  const onPress = () => setCount(prevCount => prevCount + 1);
+  const onPress = () => setCount((prevCount) => prevCount + 1);
 
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.headingWrapper}>
         <TouchableOpacity onPress={onPress} style={styles.topButton}>
-          <Text style={styles.heading}>What Count : {count}</Text>
+          <Text style={styles.heading}>WhatCount</Text>
+          <Text style={styles.heading1}>{count}</Text>
         </TouchableOpacity>
       </View>
       <FlatList
@@ -49,17 +50,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#000000",
-
-    height: 50,
+    height: 80,
   },
   heading: {
     color: "white",
     fontSize: 20,
     fontWeight: "bold",
-    paddingTop: 20,
+    paddingTop: 25,
+  },
+  heading1: {
+    color: "white",
+    fontSize: 20,
+    fontWeight: "bold",
+    paddingTop: 2,
   },
   topButton: {
-    alignItems: 'center',
+    alignItems: "center",
     color: "white",
   },
 });
