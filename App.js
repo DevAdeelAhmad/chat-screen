@@ -1,5 +1,12 @@
+import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { View, FlatList, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  SafeAreaView,
+} from "react-native";
 import { ListItem, Avatar, Text } from "react-native-elements";
 
 const data = Array.from({ length: 25 }, (_, i) => ({
@@ -17,7 +24,8 @@ export default function App() {
   const onPress = () => setCount((prevCount) => prevCount + 1);
 
   return (
-    <View style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <StatusBar style="light" />
       <View style={styles.headingWrapper}>
         <TouchableOpacity onPress={onPress} style={styles.topButton}>
           <Text style={styles.heading}>WhatCount</Text>
@@ -40,7 +48,7 @@ export default function App() {
           </ListItem>
         )}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 
